@@ -1180,7 +1180,7 @@ const Header = () => {
               {selectedNotification.image && (
                 <div className="notification-image-container">
                   <img
-                    src={`http://http://mmrtest.ru:8000${selectedNotification.image}`}
+                    src={`http://mmrtest.ru:8000${selectedNotification.image}`}
                     alt="Notification image"
                     className="modal_img"
                     onClick={(e) => {
@@ -1227,7 +1227,7 @@ const Header = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={`http://http://mmrtest.ru:8000${selectedNotification.image}`}
+                src={`http://mmrtest.ru:8000${selectedNotification.image}`}
                 alt="Fullscreen view"
                 className="fullscreen-image"
                 onClick={(e) => e.stopPropagation()}

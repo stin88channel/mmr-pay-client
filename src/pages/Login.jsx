@@ -51,7 +51,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "http://http://mmrtest.ru:8000/account/signin",
+        "http://mmrtest.ru:8000/account/signin",
         {
           login: data.login.trim(),
           password: data.password,
@@ -112,7 +112,7 @@ export default function Login() {
     try {
         // Отправка запроса на проверку кода 2FA
         const response = await axios.post(
-            "http://http://mmrtest.ru:8000/account/verify-2fa",
+            "http://mmrtest.ru:8000/account/verify-2fa",
             { token: tokenString, userId: user._id }, // Передаем токен и ID пользователя
             {
                 withCredentials: true,

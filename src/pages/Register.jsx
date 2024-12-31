@@ -26,7 +26,7 @@ export default function Register() {
 
     try {
       const response = await axios.post(
-        "http://http://mmrtest.ru:8000/account/signup",
+        "http://mmrtest.ru:8000/account/signup",
         {
           login,
           email,
