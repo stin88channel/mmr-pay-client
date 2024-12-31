@@ -1,0 +1,11 @@
+.successful-deposits {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+  }
+  
+  .successful-deposits p {
+    color: #4CAF50;
+    font-weight: bold;
+  }

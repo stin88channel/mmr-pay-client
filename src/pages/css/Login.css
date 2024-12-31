@@ -1,0 +1,309 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Убираем центрирование по высоте */
+  align-items: center;
+  max-height: 100vh;
+  background-color: #0d0d0d; /* Фон страницы */
+}
+
+.logo {
+  margin-bottom: 0; /* Убираем отступ под логотипом */
+}
+
+form.login_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Убираем центрирование по высоте внутри формы */
+  background-color: #18181c; /* Цвет фона формы */
+  padding: 40px; /* Отступы внутри формы */
+  border-radius: 30px;
+  margin: 5% 0; /* Отступы сверху и снизу для формы */
+  width: 700px;
+  height: 100vh;
+  border: 1px solid #ffffff1a;
+}
+
+form .auth_title {
+  font-size: 32px;
+  margin-bottom: 20px; /* Отступ под заголовком */
+  color: #ffffff; /* Цвет заголовка */
+}
+
+form .auth_input {
+  width: 450px; /* Ширина инпутов */
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05); /* Цвет фона инпутов */
+  border: 1px solid #444; /* Цвет границы инпутов */
+  color: rgb(255, 255, 255); /* Цвет текста */
+  text-indent: 10px; /* Отступ текста внутри инпута */
+  letter-spacing: 0.15rem;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px 0; /* Отступы между инпутами */
+  line-height: 1.4375em;
+  letter-spacing: 0.02em;
+}
+
+form .login, form .password {
+  display: flex;
+  flex-direction: column;
+}
+
+form .auth_input::placeholder {
+  color: #ccc; /* Цвет плейсхолдера */
+}
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth_button {
+  margin-top: 50px;
+  display: flex; /* Используем Flexbox */
+  justify-content: center; /* Центрируем содержимое по горизонтали */
+  align-items: center; /* Центрируем содержимое по вертикали */
+  width: 100%; /* Ширина кнопки */
+  height: 50px; /* Высота кнопки */
+  background-color: rgb(38, 187, 255); /* Цвет кнопки */
+  color: rgb(16, 16, 20); /* Цвет текста */
+  border: none; /* Без границы */
+  border-radius: 10px; /* Закругленные углы */
+  font-size: 16px; /* Размер шрифта */
+  font-weight: 500; /* Жирный шрифт */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход */
+}
+
+.auth_button:hover {
+  background-color: rgb(32, 154, 211); /* Цвет кнопки при наведении */
+  transform: translateY(-2px);
+}
+
+/* Стили для ссылки регистрации */
+.register-link {
+  margin-top: 15px; /* Отступ сверху */
+  color: #ffffff; /* Цвет текста */
+  text-decoration: none; /* Убираем подчеркивание */
+}
+
+.register-link:hover {
+  text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Общие стили для модального окна 2FA */
+.twofa-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Полупрозрачный фон */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0; /* Начальная непрозрачность */
+  visibility: hidden; /* Скрыто по умолчанию */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Плавный переход для фона */
+}
+
+.twofa-modal-overlay.show {
+  opacity: 1; /* Полная непрозрачность при показе */
+  visibility: visible; /* Делаем видимым */
+}
+
+/* Стили для содержимого модального окна 2FA */
+.twofa-modal-content { 
+  background-color: rgb(24, 24, 28); /* Цвет фона формы */
+  border: 1px solid #ffffff1a;
+  border-radius: 15px; /* Закругленные углы */
+  padding: 40px; /* Увеличенные отступы */
+  box-shadow: 0 8px 30px rgba(0 , 0, 0, 0.5); /* Глубокая тень */
+  width: 90%; /* Ширина модального окна */
+  max-width: 600px; /* Максимальная ширина */
+  display: flex;
+  flex-direction: column; /* Вертикальное расположение элементов */
+  justify-content: center; /* Центрирование по вертикали */
+  align-items: center; /* Центрирование по горизонтали */
+  transform: translateY(-20px); /* Начальная позиция немного выше */
+  opacity: 0; /* Начальная непрозрачность */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Плавный переход для содержимого */
+  animation: fadeIn 0.3s ease forwards; /* Анимация появления */
+}
+
+.twofa-modal-content.show {
+  transform: translateY(0); /* Конечная позиция */
+  opacity: 1; /* Полная непрозрачность при показе */
+}
+
+/* Анимация закрытия */
+.twofa-modal-content.closing {
+  transform: translateY(-20px); /* Поднимаем содержимое при закрытии */
+  opacity: 0; /* Убираем непрозрачность при закрытии */
+}
+
+/* Заголовок модального окна 2FA */
+.twofa-modal-content h2 {
+  margin: 0 0 15px; /* Отступы */
+  font-size: 1.3rem; /* Размер шрифта */
+  font-weight: normal;
+  color: rgb(255, 255, 255);
+  font-weight: 600; /* Увеличенный вес шрифта */
+  text-align: center; /* Центрирование текста */
+}
+
+/* Стили для кнопок */
+.modal-buttons {
+  display: flex;
+  justify-content: center; /* Центрирование кнопок */
+  margin-top: 20px; /* Отступ сверху */
+  gap: 10px; /* Отступы между кнопками */
+  width: 100%; /* Занимает всю ширину */
+}
+
+.auth_2fa_text {
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 30px;
+  font-size: 1rem;
+}
+
+/* Стили для инпутов токена */
+.token-inputs {
+  display: flex;
+  justify-content: center; /* Центрирование инпутов */
+  align-items: center; /* Центрирование по вертикали */
+  margin: 50px 0;
+  padding-right: 42px;
+  gap: 2px;
+}
+
+.token-input {
+  font-size: 1.5rem; /* Размер шрифта */
+  padding: 5px;
+  line-height: 1.4375em;
+  font-weight: 400;
+  cursor: text;
+  outline: none; /* Убираем обводку */
+  margin: 0 5px; /* Отступы между инпутами */
+  background-color: rgba(255, 255, 255, 0.05); /* Цвет фона инпутов */
+  border: 1px solid #444; /* Цвет границы инпутов */
+}
+
+.token-input:focus {
+  border-color: #007bff; /* Цвет границы при фокусе */
+  background-color: #39373f;
+}
+
+/* Дополнительные стили для инпутов */
+.token-input::placeholder {
+  color: #ccc; /* Цвет плейсхолдера */
+  opacity: 0.7; /* Прозрачность плейсхолдера */
+}
+
+/* Стили для значка Google 2FA */
+.google-icon {
+  width: 30px; /* Ширина значка */
+  height: 30px; /* Высота значка */
+  margin-right: 10px; /* Отступ справа от значка */
+  color: #ccc; /* Цвет иконки Google */
+  display: flex; /* Используем flex для центрирования */
+  align-items: center; /* Центрирование по вертикали */
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth_2fa_buttons {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход */
+}
+
+.auth_2fa_buttons .confirm_btn:hover {
+  transform: translateY(-2px); /* Легкий подъем при наведении */
+  background-color: rgb(32, 154, 211); /* Цвет кнопки при наведении */
+}
+
+.auth_2fa_buttons .confirm_btn {
+  height: 50px; /* Высота кнопки */
+  width: 80%; /* Ширина кнопки */
+  background-color: rgb(38, 187, 255); /* Зеленый фон для кнопки подтверждения */
+  color: rgb(16, 16, 20);
+  border: none; /* Без границы */
+  font-size: 1rem;
+  border-radius: 5px; /* Закругленные углы */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход */
+}
+
+.go_back_link {
+  position: relative;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgb(38, 187, 255);
+  text-decoration: underline rgb(38, 187, 255);
+  margin: 32px 0 auto;
+}
+
+.auth_logo {
+  margin-bottom: 0; /* Убираем отступ под логотипом */
+  width: 200px; /* Ширина логотипа */
+  pointer-events: none;
+}
+
+.auth_label {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.twofa_qr {
+  margin: 30px 0;
+}
+
+.login_loader {
+  width: 25px; /* Размер прелоадера */
+  height: 25px; /* Размер прелоадера */
+  border-radius: 50%;
+  border: 3px solid #3a393e; /* Цвет фона */
+  border-top: 3px solid #f3f3f3; /* Цвет верхней части */
+  animation: spin 1s linear infinite; /* Анимация вращения */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.link_to_signin {
+  position: relative;
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgb(38, 187, 255);
+  text-decoration: underline rgb(38, 187, 255);
+  margin: 32px 0 auto;
+}

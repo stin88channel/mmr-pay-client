@@ -1,0 +1,184 @@
+.payment-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0d0d0d;
+  padding: 20px;
+}
+
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ffffff1a;
+  background-color: #18181c;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.error-container {
+  text-align: center;
+  padding: 30px;
+  background-color: #111;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.error-message {
+  color: #ff4444;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+.error-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.error-actions a {
+  pointer-events: auto;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgb(38, 187, 255);
+  text-decoration: underline rgb(38, 187, 255);
+}
+
+.add-payment-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button {
+  background-color: #26bbff;
+  color: #000;
+  font-weight: 500;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  background-color: rgb(32, 154, 211);
+}
+
+.payment-details {
+  margin: 20px 0;
+  padding: 30px 60px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #444;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.bank-info {
+  text-align: center;
+}
+
+.bank-info, .requisites-info {
+  margin-bottom: 15px;
+}
+
+.payment-bank-requisites {
+  margin-top: 15px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment-bank-requisites img {
+  margin-right: 5px;
+}
+
+.requisites-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.payment-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.copy-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+p {
+  color: #ddd;
+  margin: 5px 0;
+}
+
+/* Анимации для контента страницы */
+.payment-container {
+  animation: slideDown 0.5s ease forwards;
+}
+
+.payment-details {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.requisites-info-copy {
+  margin-top: 10px;
+  display: flex;
+}
+
+.processing-button {
+  background-color: #dbbd0e;
+  padding: 15px 40px;
+  border-radius: 6px;
+  color: #000;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.payment-actions .processing-button:hover {
+  transform: translateY(-2px);
+  background-color: #b49b0b;
+}
+
+.confirm-button {
+  background-color: #26bbff;
+  padding: 15px 40px;
+  border-radius: 6px;
+  color: #000;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.payment-actions .confirm-button:hover {
+  transform: translateY(-2px);
+  background-color: rgb(32, 154, 211);
+}
+
+.requisites-info .copy_button {
+  margin-left: 5px;
+}

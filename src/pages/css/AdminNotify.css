@@ -1,0 +1,147 @@
+.notify-container {
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.notify-container h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.notify-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notify-container textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
+    resize: vertical;
+    min-height: 120px;
+}
+
+.send-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.send-button:hover {
+    background-color: #45a049;
+}
+
+.send-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.send-button:hover:not(:disabled) {
+    background-color: #218838;
+}
+
+.notify-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.admin-info {
+    color: #adff2f;
+    font-size: 14px;
+    background-color: #0f2324;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.admin-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #222;
+    color: #fff;
+    font-size: 16px;
+}
+
+.editor-toolbar {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.editor-toolbar button:hover {
+    background-color: #444;
+}
+
+.editor-toolbar button {
+    padding: 8px 15px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-editor {
+    width: 100%;
+    min-height: 200px;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #222;
+    color: #fff;
+    outline: none;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    transition: 0.3s;
+}
+
+.admin-editor:empty:before {
+    content: 'Введите текст уведомления...';
+    color: #666;
+    position: absolute;
+    pointer-events: none;
+}
+
+.admin-editor:focus {
+    border-color: #adff2f;
+}
+
+.file-input-container {
+    margin-bottom: 15px;
+}
+
+.admin-file-input {
+    display: none;
+    margin-bottom: 10px;
+}
+
+.file-input-label {
+    cursor: pointer;
+    background-color: #333;
+    padding: 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.file-input-label:hover {
+    background-color: #444;
+}

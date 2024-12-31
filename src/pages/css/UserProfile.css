@@ -1,0 +1,238 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logout_button {
+  color: #fff;
+  background-color: #1e1e1e;
+  border: 1px solid #999;
+  border-radius: 20px;
+  padding: 30px 90px;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+.logout_button:hover {
+  background-color: #262626;
+}
+
+.preload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px; /* добавляем отступ между текстом и точками */
+}
+
+.loading-text {
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+/* Общие стили для модального окна */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Увеличенная непрозрачность фона */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: rgb(24, 24, 28);
+  border: 1px solid #ffffff1a;
+  border-radius: 15px;
+  padding: 30px; /* Увеличенные отступы */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Более глубокая тень */
+  width: 600px; /* Ширина модального окна */
+  animation: fadeIn 0.3s; /* Анимация появления */
+  text-align: center; /* Центрирование текста */
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Начальная позиция немного выше */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Конечная позиция */
+  }
+}
+
+/* Применяем анимацию появления к модальному окну */
+.modal-content {
+  animation: fadeIn 0.3s forwards; /* Плавный вход */
+}
+
+/* Анимация закрытия */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Применяем анимацию закрытия к модальному окну */
+.modal-content.closing {
+  animation: fadeOut 0.3s forwards; /* Плавный уход */
+}
+
+/* Заголовок модального окна */
+.modal-content h3 {
+  margin: 30px 0; /* Отступы */
+  font-size: 24px; /* Размер шрифта */
+  color: #ffffff; /* Белый цвет текста */
+  font-weight: 600; /* Увеличенный вес шрифта */
+}
+
+/* Стили для меток */
+.modal-content label {
+  color: rgba(255, 255, 255, 0.65);
+  display: block; /* Блоковое отображение для меток */
+  margin-bottom: 5px; /* Отступ снизу */
+  font-size: 14px; /* Размер шрифта меток */
+}
+
+/* Стили для полей ввода */
+.modal-content input {
+  width: 100%; /* Полная ширина */
+  padding: 12px; /* Увеличенные отступы внутри поля */
+  margin-bottom: 20px; /* Отступ снизу */
+  border: 1px solid #3a393e; /* Темная граница */
+  border-radius: 5px; /* Закругленные углы */
+  background-color: #242328; /* Темный фон для полей ввода */
+  color: #ffffff; /* Белый текст */
+  transition: background-color 0.3s, border-color 0.3s; /* Плавный переход */
+}
+
+.modal-content input:focus {
+  background-color: #39373f; /* Более светлый фон при фокусе */
+  border-color: rgb(32, 154, 211);; /* Зеленая граница при фокусе */
+  outline: none; /* Убираем обводку */
+}
+
+/* Стили для кнопок */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between; /* Распределение кнопок */
+  margin-top: 20px; /* Отступ сверху */
+}
+
+.modal-buttons button {
+  background-color: #4caf50; /* Зеленый фон */
+  color: white; /* Белый текст */
+  border: none; /* Без границы */
+  border-radius: 5px; /* Закругленные углы */
+  padding: 12px 20px; /* Увеличенные отступы */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход */
+  flex: 1; /* Равное распределение кнопок */
+  margin: 0 5px; /* Отступы между кнопками */
+  font-weight: 500; /* Увеличенный вес шрифта */
+}
+
+.modal-buttons .cancel_btn {
+  background-color: #f44336; /* Красный фон для кнопки отмены */
+}
+
+.modal-buttons .cancel_btn:hover {
+  background-color: #af302d; /* Темнее при наведении */
+}
+
+.modal-buttons .confirm_btn:hover {
+  background-color: #0056b3; /* Темнее при наведении */
+}
+
+/* Стили для сообщения об ошибке */
+.error-message {
+  color: #f44336; /* Красный цвет для ошибок */
+  margin-bottom: 10px; /* Отступ снизу */
+  font-size: 14px; /* Размер шрифта */
+  text-align: center; /* Центрирование текста */
+}
+
+/* Стили для кнопки подтверждения токена */
+.modal-content button[type="submit"] {
+  background-color: rgb(38, 187, 255); /* Цвет кнопки */
+  color: rgb(16, 16, 20); /* Цвет текста */
+  border-radius: 10px; /* Закругленные углы */
+  font-size: 18px; /* Размер шрифта */
+  margin-top: 20px; /* Отступ сверху */
+  cursor: pointer; /* Указатель при наведении */
+  transition: background-color 0.3s, transform 0.2s; /* Плавный переход */
+
+}
+
+.modal-content button[type="submit"]:hover {
+  background-color: rgb(32, 154, 211); /* Цвет кнопки при наведении */
+  transform: translateY(-2px); /* Легкий подъем при наведении */
+}
+
+.token-inputs input {
+  height: 60px;
+  width: 49px;
+  margin: 0 5px;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1.3rem;  
+  color: #fff;
+  text-align: center;
+  background-color: #242328; /* Темный фон для полей ввода токена */
+  border: 1px solid #3a393e; /* Темная граница */
+  transition: background-color 0.3s, border-color 0.3s; /* Плавный переход */
+}
+
+.token-inputs #token-3 {
+  margin-left: 20px;
+}
+
+.token-inputs input:focus {
+  background-color: #39373f;
+  border-color: rgb(32, 154, 211);
+  outline: none; /* Убираем обводку */
+}
+
+.twofa_off_label {
+  margin-top: 30px;
+}
+
+.profile_buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile_button {
+  padding: 20px 0;
+  width: 200px;
+  background-color: #da4076;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.profile_button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.twofa_off_button, .add_twofa_button {
+  margin-top: 10px;
+}

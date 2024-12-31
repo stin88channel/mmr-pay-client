@@ -1,0 +1,129 @@
+.transactions {
+  padding: 40px 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 750px;
+}
+
+.transactions-history-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+}
+
+.menu-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.menu-button:hover {
+  background-color: #444;
+}
+
+.menu-button.active {
+  background-color: #4CAF50;
+}
+
+.section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  opacity: 0;
+}
+
+.section-content.expanded {
+  max-height: 1000px;
+  /* Adjust this value based on your content */
+  opacity: 1;
+}
+
+.deposits-section,
+.topups-section,
+.statistics-section {
+  padding: 20px;
+  background-color: #222;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.deposit-item {
+  display: flex;
+  flex-direction: column; /* Вертикальное расположение элементов */
+  padding: 10px 0;
+  border-bottom: 1px solid #333;
+  position: relative; /* Для позиционирования текста "Подробности" */
+  transition: background-color 0.3s ease; /* Плавный переход фона */
+  cursor: pointer;
+}
+
+.deposit-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Изменение фона при наведении */
+}
+
+.deposit-summary {
+  display: flex;
+  justify-content: space-between; /* Разделяем сумму и детали */
+  width: 100%; /* Занимаем всю ширину */
+}
+
+.deposit-amount {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.deposit-details {
+  display: flex;
+  gap: 8px; /* Пробел между элементами */
+}
+
+.deposit-time,
+.deposit-date {
+  color: #999;
+}
+
+.additional-info {
+  display: flex;
+  align-items: center;
+  margin-top: 5px; /* Отступ сверху для дополнительной информации */
+  margin-left: 10px;
+}
+
+.dot {
+  width: 8px; /* Ширина точки */
+  height: 8px; /* Высота точки */
+  background-color: #4CAF50; /* Цвет точки */
+  border-radius: 50%; /* Закругленная форма */
+  margin-right: 10px; /* Отступ справа от точки */
+}
+
+.deposit-details.expanded {
+  display: flex; /* Показываем дополнительную информацию при раскрытии */
+  flex-direction: column; /* Вертикальное расположение */
+  padding: 10px 0; /* Отступы вокруг дополнительной информации */
+  margin: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.05); /* Фон для дополнительной информации */
+  border-radius: 5px; /* Закругленные углы для дополнительной информации */
+}
+
+.deposit-item.expanded .deposit-details {
+  display: flex; /* Показываем дополнительную информацию при раскрытии */
+}
+
+.deposit-requisites {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

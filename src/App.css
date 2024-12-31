@@ -1,0 +1,537 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", system-ui;
+}
+
+body {
+  /*
+  background-image: linear-gradient(rgba(255, 255, 255, .1) ,rgba(0, 0, 0, 0.6)), url("./assets/mmr-bg.png");
+  */
+  background: linear-gradient(135deg, #1f1f1f, #2f2f2f, #3f3f3f);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+
+header {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 750px;
+}
+
+.hidden {
+  display: none;
+}
+
+.applications {
+  width: 80vw;
+  background-color: #111;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.applications_buttons {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0 35px 0;
+  flex-wrap: wrap; /* Добавляем перенос кнопок на новую строку при необходимости */
+}
+
+.applications_buttons .applications_options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.applications_buttons .applications_options .buttons {
+  margin-left: 20px;
+  background-color: #0d0d0d;
+  padding: 20px 40px;
+  border-radius: 10px;
+  border: 1px solid #999;
+  cursor: pointer;
+  transition: all 0.4s; /* добавляем переход */
+}
+
+.applications_buttons .applications_options .buttons:nth-child(5) {
+  text-wrap: nowrap;
+}
+
+.applications_buttons .applications_options .buttons:hover {
+  border-color: #adff2f;
+}
+
+.applications_table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.applications_table table {
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.applications_table th, .applications_table td, .empty-row td {
+  border: 1px solid #222222;
+  padding: 10px;
+}
+
+.applications_table th,
+.applications_table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.applications_table th {
+  background-color: #111;
+  font-weight: bold;
+}
+
+.applications_table tr:hover {
+  background-color: #191919;
+}
+
+.applications_buttons .applications_options .buttons {
+  border-color: 1px solid #999;
+}
+
+.applications
+  .applications_buttons
+  .applications_options
+  .buttons.button_active {
+  border-color: #adff2f;
+}
+
+.canceled {
+  color: #FF4444;
+}
+
+.active {
+  color: #adff2f;
+}
+
+.processing {
+  color: yellow;
+}
+
+.checking_button {
+  background: none;
+  border: none;
+  scale: 1.4;
+  text-decoration: none;
+  border: 1px solid #2f2f2f;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.checking_button:hover {
+    transform: translateY(-1px);
+    background-color: #333;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.checking_button:nth-child(2) {
+  margin-left: 20px;
+}
+
+.not_clickable {
+  pointer-events: none;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0px;
+  gap: 10px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.pagination p {
+  margin: 0;
+}
+
+.pagination_button {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #adff2f;
+  background-color: #1d1d1d;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.pagination_button:not(:disabled) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pagination_button:disabled {
+  background-color: #111;
+  color: #fff;
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: translateY(0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+.error-container button {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.error-container button:hover {
+  background-color: #2980b9;
+}
+  
+  /* Для средних настольных компьютеров */
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    main {
+      padding: 40px 0;
+    }
+  
+    .applications {
+      width: 70%;
+    }
+  }
+  
+  /* Для планшетов в горизонтальной ориентации */
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    main {
+      padding: 30px 0;
+    }
+  
+    .applications {
+      width: 100%;
+      max-width: 800px;
+    }
+  }
+  
+  /* Для планшетов в вертикальной ориентации */
+  @media screen and (min-width: 600px) and (max-width: 767px) {
+    main {
+      padding: 20px 0;
+    }
+  
+    .applications {
+      width: 100%;
+      max-width: 600px;
+    }
+  }
+  
+  /* Для маленьких планшетов и больших телефонов */
+  @media screen and (min-width: 480px) and (max-width: 599px) {
+    main {
+      padding: 15px 0;
+    }
+  
+    .applications {
+      width: 100%;
+      max-width: 480px;
+      padding: 15px;
+    }
+  }
+  
+  /* Не включаем стили для телефонов (ширина экрана менее 480px) */
+
+  /* Общие анимации */
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Базовые анимации для общих элементов */
+.main_container {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+input, textarea {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: rgb(32, 154, 211);
+  box-shadow: 0 0 0 2px rgba(173, 255, 47, 0.2);
+}
+
+/* Анимации для статусов */
+.error {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.success {
+  animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.app-container {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.app-container.visible {
+  opacity: 1;
+}
+
+.app-content {
+  position: relative;
+  min-height: 100vh;
+}
+
+.empty-row td {
+  height: 0px; /* или высота, соответствующая вашим обычным строкам */
+  background-color: transparent;
+  border: 1px solid #333;
+}
+
+.applications_table tr {
+    height: 45px; /* Фиксированная высота для всех строк */
+}
+
+
+
+
+
+
+
+.loader {
+  width: 8px;
+  height: 40px;
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  background: currentColor;
+  color: #FFF;
+  animation: animloader 0.2s 0.2s linear infinite alternate;
+}
+
+.loader::after, .loader::before {
+  content: "";
+  width: 8px;
+  height: 40px;
+  border-radius: 4px;
+  background: currentColor;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  animation: animloader 0.2s 0.25s linear infinite alternate;
+}
+
+.loader::before {
+  left: -20px;
+  animation-delay: 0s;
+}
+
+@keyframes animloader {
+  0% {
+    height: 48px;
+  }
+  100% {
+    height: 4.8px;
+  }
+}
+
+
+
+
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.bank-requisites {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Отступ между логотипом и реквизитами */
+}
+
+.bank-logo {
+  width: 24px; /* Ширина логотипа */
+  height: 24px; /* Высота логотипа */
+  object-fit: contain; /* Сохранение пропорций */
+}
+
+.table_preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader-26 {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  position: relative;
+}
+.loader-26::after, .loader-26::before {
+  content: "";
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #c5c5c5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: animloader14 2s linear infinite;
+}
+.loader-26::after {
+  animation-delay: 1s;
+}
+
+@keyframes animloader14 {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

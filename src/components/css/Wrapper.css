@@ -1,0 +1,74 @@
+.wrapper {
+  position: relative;
+  z-index: 999; /* Меньше, чем у header и popup */
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.wrapper_buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.wrapper_button {
+  padding: 16px 28px;
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper_button:hover {
+  transform: translateY(-2px);
+  background-color: #1a1a1a;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Анимация при наведении */
+.wrapper_button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.wrapper_button:hover::after {
+  width: 200%;
+  height: 200%;
+}
+
+/* Специальный стиль для админской кнопки */
+.admin-link {
+  background-color: #2d0000;
+}
+
+.admin-link:hover {
+  background-color: #3d0000;
+}
+
+/* Анимация появления */
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.wrapper {
+  animation: slideDown 0.5s ease forwards;
+}

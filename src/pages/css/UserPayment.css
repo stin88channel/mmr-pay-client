@@ -1,0 +1,635 @@
+.payment_form {
+  position: relative;
+  background-color: rgb(24, 24, 28);
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 60px 120px;
+}
+
+.payment_form label {
+  margin: 2px 0;
+}
+
+.pay .applications_table tr {
+  height: 48px;
+}
+
+.pay .applications_table th,
+.pay .applications_table td {
+  vertical-align: middle;
+}
+
+/* Анимации для появления и исчезновения */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Анимация для overlay */
+.blur-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.2s ease forwards;
+}
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.page-container.blurred > *:not(.modal-overlay) {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.modal-overlay.closing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+/* Общие стили для модальных окон */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease;
+}
+
+.add_payment_option {
+  background-color: #0d0d0d;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  width: 100%;
+  z-index: 1001;
+}
+
+.payment_blur {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+/* Стили для модального окна добавления реквизита */
+.payment_option_input {
+  padding: 20px;
+  border-radius: 20px;
+  z-index: 1001;
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+.payment_option_input.closing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+.payment_option_input form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.payment_option_input input {
+  width: 350px;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #3a393e;
+  border-radius: 5px;
+  background-color: #242328;
+  color: #fff;
+}
+
+.payment_option_input label {
+  color: #fff;
+  font-size: 14px;
+}
+
+.payment_option_title {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.form_buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form_buttons .cancel_btn,
+.confirm_btn {
+  padding: 15px 35px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.form_buttons .cancel_btn {
+  background-color: #da4076;
+  transition: all 0.3s ease;
+}
+
+.form_buttons .confirm_btn {
+  background-color: #26bbff;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.form_buttons .confirm_btn:hover {
+  background-color: rgb(32, 154, 211);
+  color: #000;
+  font-weight: 500;
+  transform: translateY(-2px);
+}
+
+.form_buttons .cancel_btn:hover {
+  background-color: #fff;
+  color: #000;
+  font-weight: 500;
+  transform: translateY(-2px);
+}
+
+.confirmation-buttons .cancel_btn {
+  background-color: #26bbff;
+  color: #000;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.payment_title_add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 40px 20px 20px;
+}
+
+.payment_title {
+  font-size: 24px;
+  color: #fff;
+}
+
+.add {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 20px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.applications_table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0px;
+  gap: 10px;
+}
+
+.page_arrow {
+  display: flex;
+  align-items: center;
+}
+
+.page_arrow button {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #adff2f;
+  background-color: #1d1d1d;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page_arrow span {
+  color: #fff;
+}
+
+.inactive {
+  background-color: red;
+  padding: 5px;
+}
+
+/* Добавьте эти стили в конец файла UserPayment.css */
+
+.on_off {
+  text-align: center; /* Центрирует содержимое ячейки */
+}
+
+.status_button {
+  width: 100px; /* Фиксированная ширина для кнопки */
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  display: inline-block; /* Делает кнопку строчно-блочным элементом */
+}
+
+.status_button.active {
+  background-color: #4caf50; /* Зеленый цвет для активного статуса */
+  color: white;
+}
+
+.status_button.inactive {
+  background-color: #ff4444; /* Красный цвет для неактивного статуса */
+  color: white;
+}
+
+/* Стили для модального окна подтверждения удаления */
+.confirmation-modal {
+  background-color: rgb(24, 24, 28); /* Цвет фона формы */
+  border: 1px solid #ffffff1a;
+  border-radius: 15px; /* Закругленные углы */
+  padding: 40px; /* Увеличенные отступы */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Глубокая тень */
+  width: 90%; /* Ширина модального окна */
+  max-width: 600px; /* Максимальная ширина */
+  display: flex;
+  flex-direction: column; /* Вертикальное расположение элементов */
+  justify-content: center; /* Центрирование по вертикали */
+  align-items: center; /* Центрирование по горизонтали */
+  transform: translateY(-20px); /* Начальная позиция немного выше */
+  opacity: 0; /* Начальная непрозрачность */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Плавный переход для содержимого */
+  animation: fadeIn 0.3s ease forwards; /* Анимация появления */
+}
+
+.confirmation-modal h3 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.confirmation-modal p {
+  color: #fff;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+.confirmation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.confirmation-buttons button {
+  padding: 15px 70px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.confirmation-buttons .cancel_btn:hover {
+  background-color: rgb(32, 154, 211);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+.confirmation-buttons .confirm_btn {
+  background-color: #da4076;
+  color: white;
+}
+
+.confirmation-buttons .confirm_btn:hover {
+  background-color: #fff;
+  color: #000;
+  font-weight: 500;
+  transform: translateY(-2px);
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Добавьте класс для анимации исчезновения */
+.confirmation-modal.closing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+.blur-container.closing {
+  animation: fadeOut 0.2s ease forwards;
+}
+
+.preload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 20px; /* добавляем отступ между текстом и точками */
+}
+
+.loading-text {
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+.bank-select-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.bank-select {
+  width: 100%;
+  padding: 10px 40px 10px 40px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+  color: #fff;
+  appearance: none;
+  cursor: pointer;
+}
+
+.bank-select-arrow {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #666;
+}
+
+.bank-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bank-logo-small {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.selected-bank {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selected-bank img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* Анимация для контейнера таблицы */
+.applications_table {
+  animation: slideDown 0.5s ease forwards;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.applications_table:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Анимация для заголовков таблицы */
+.applications_table th {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--col-index) * 0.1s);
+}
+
+/* Подчеркивание при наведении на заголовок */
+.applications_table th::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #adff2f;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.applications_table th:hover::after {
+  transform: translateX(0);
+}
+
+/* Эффект при наведении на заголовок */
+.applications_table th:hover {
+  background-color: #1a1a1a;
+  color: #adff2f;
+}
+
+/* Анимация для контейнера заголовков */
+.applications_table thead {
+  position: relative;
+  animation: slideDown 0.4s ease forwards;
+}
+
+/* Тень под заголовками при прокрутке */
+.applications_table thead::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 5px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.applications_table:hover thead::after {
+  opacity: 1;
+}
+
+/* Базовые анимации */
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pagination button {
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Анимация для заголовка таблицы */
+.payment_title {
+  position: relative;
+  animation: slideDown 0.5s ease forwards;
+}
+
+.payment_title::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #adff2f;
+  transition: width 0.3s ease;
+}
+
+.payment_title:hover::after {
+  width: 100%;
+}
+
+/* Анимация для кнопки добавления */
+.add {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.add::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.add:hover::after {
+  width: 200%;
+  height: 200%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination p {
+  margin: 0;
+}
+
+.pagination_button {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #adff2f;
+  background-color: #1d1d1d;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination_button:not(:disabled):hover {
+  background-color: #adff2f;
+  color: #1d1d1d;
+}
+
+.pagination_button:disabled {
+  background-color: #111;
+  color: #fff;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Анимация для появления модального окна */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
